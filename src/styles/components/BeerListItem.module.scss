@@ -1,0 +1,47 @@
+.item {
+  &__imgSection {
+    display: flex;
+    padding: 10px;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid #eeeeee;
+    box-shadow: 0 7px 12px 0 rgba(0, 0, 0, 0.08);
+
+    > img {
+      width: auto;
+      max-width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__infoSection {
+    padding: 10px;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  &__beerName {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__taglineBlock {
+    margin: 1px 0 0 0;
+  }
+
+  &__taglineText {
+    color: #818181;
+    font-size: 14px;
+  }
+
+  &__abvBlock {
+    padding: 0;
+  }
+
+  &__abvText {
+    font-style: italic;
+    font-size: 15px;
+  }
+}
