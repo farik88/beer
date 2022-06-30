@@ -19,8 +19,8 @@ const TabbedCategories:FC = () => {
       <div
         role="tabpanel"
         hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
+        id={`beer-cat-tabpanel-${index}`}
+        aria-labelledby={`beer-cat-tab-${index}`}
         {...other}
       >
         {value === index && (
@@ -34,8 +34,8 @@ const TabbedCategories:FC = () => {
 
   function a11yProps(index: number) {
     return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`,
+      id: `beer-cat-tab-${index}`,
+      'aria-controls': `beer-cat-tabpanel-${index}`,
     };
   }
 
