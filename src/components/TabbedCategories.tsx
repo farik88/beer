@@ -54,10 +54,10 @@ const TabbedCategories:FC = () => {
       </Box>
       <Box p={2}>
         <TabPanel value={value} index={0}>
-          <BeerList food={"pizza"}/>
+          <BeerList/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <BeerList />
+          <BeerList food={"pizza"}/>
         </TabPanel>
         <TabPanel value={value} index={2}>
           <BeerList food={"steak"}/>
