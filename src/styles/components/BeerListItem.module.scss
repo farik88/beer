@@ -21,10 +21,24 @@
     border-bottom: 1px solid #eeeeee;
   }
 
-  &__beerName {
+  &__descSection {
+    padding: 10px;
+  }
+
+  &__foodSection {
+    padding: 10px;
+  }
+
+  &__title {
     margin: 0;
     font-size: 20px;
     font-weight: 700;
+  }
+
+  &__subTitle {
+    margin: 0 0 5px 0;
+    font-size: 17px;
+    font-weight: 500;
   }
 
   &__taglineBlock {
@@ -43,5 +57,30 @@
   &__abvText {
     font-style: italic;
     font-size: 15px;
+  }
+}
+
+.clampContent {
+  font-size: 14px;
+  line-height: 18px;
+  color: #4f4f4f;
+  text-align: right;
+
+  > p {
+    display: block;
+    margin: 0 0 5px 0;
+    text-align: left;
+  }
+
+  > button {
+    display: inline-block;
+    border: none;
+    outline: none;
+    appearance: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: #818181;
   }
 }
