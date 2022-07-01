@@ -5,20 +5,10 @@ import {Box, Button, CircularProgress, Divider, Grid} from "@mui/material";
 import axios from "axios";
 import {IBeer} from "../types/IBeer";
 import {PunkAPI} from "../API/PunkAPI";
-import BeerListSort from "./BeerListSort";
-
-export enum BeerListSorts {
-  ABV = "ABV",
-  NAME = "NAME"
-}
+import BeerListSort, {getSortedBeers, ISort} from "./BeerListSort";
 
 interface propsBeerList {
   food?: string;
-}
-
-export interface ISort {
-  sortBy: null|string;
-  mode: "ASC"|"DESC";
 }
 
 const BeerList:FC<propsBeerList> = ({food}) => {
@@ -36,7 +26,7 @@ const BeerList:FC<propsBeerList> = ({food}) => {
 
     try {
       const loadedBeers = await PunkAPI.load(page, perPage, food)
-      const newBeers = getSortedBeers([...beers, ...loadedBeers])
+      const newBeers = getSortedBeers([...beers, ...loadedBeers], sort)
       setBeers(newBeers)
       if (loadedBeers.length < perPage) {
         setIsHasMore(false)
@@ -52,51 +42,8 @@ const BeerList:FC<propsBeerList> = ({food}) => {
     }
   }
 
-  const getSortedBeers = (beers: IBeer[]) => {
-    switch (sort.sortBy) {
-      case BeerListSorts.NAME:
-        // Sort by beer name
-        return [...beers].sort((a, b) => {
-          let nameA = a.name.toLowerCase()
-          let nameB = b.name.toLowerCase()
-
-          if (sort.mode === "ASC") {
-            if (nameA < nameB) {return -1}
-            if (nameA > nameB) {return 1}
-          }
-
-          if (sort.mode === "DESC") {
-            if (nameA < nameB) {return 1}
-            if (nameA > nameB) {return -1}
-          }
-
-          return 0
-        })
-      case BeerListSorts.ABV:
-        // Sort by beer ABV
-        return [...beers].sort((a, b) => {
-          if (sort.mode === "ASC") {
-            if (a.abv < b.abv) {return -1}
-            if (a.abv > b.abv) {return 1}
-          }
-
-          if (sort.mode === "DESC") {
-            if (a.abv < b.abv) {return 1}
-            if (a.abv > b.abv) {return -1}
-          }
-
-          return 0
-        })
-      default:
-        // Sort by id (default sort)
-        return [...beers].sort((a, b) => {
-          return a.id > b.id ? 1 : (b.id > a.id ? -1 : 0)
-        })
-    }
-  }
-
   useEffect(() => {
-    setBeers(getSortedBeers(beers))
+    setBeers(getSortedBeers(beers, sort))
   }, [sort])
 
   useEffect(() => {
